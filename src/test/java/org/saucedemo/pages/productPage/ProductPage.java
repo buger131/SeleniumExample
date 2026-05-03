@@ -15,6 +15,7 @@ import static org.saucedemo.BasePageObject.cartBtn;
 
 @Slf4j
 public class ProductPage extends BasePage {
+    
     @FindBy(className = "title")
     private WebElement pageTitle;
 
