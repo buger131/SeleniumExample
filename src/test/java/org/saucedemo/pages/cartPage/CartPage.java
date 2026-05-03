@@ -11,6 +11,7 @@ import org.saucedemo.BasePageObject;
 
 @Slf4j
 public class CartPage extends BasePage {
+    
     @FindBy(className = "cart_item")
     private WebElement cartItem;
 
