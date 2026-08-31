@@ -33,7 +33,6 @@ public abstract class BasePage<T> {
 
     public static <P extends BasePage<?>> P create(Class<P> pageClass) {
         try {
-//            Constructor<P> constructor = pageClass.getConstructor(WebDriver.class);
             return pageClass.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
             throw new RuntimeException("Не удалось создать страницу" + pageClass, e);

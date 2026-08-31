@@ -20,20 +20,22 @@ public abstract class BaseTest<T extends BasePage<?>> {
     protected static WebDriver driver;
     protected T page;
 
-    private static final ChromeOptions options = new ChromeOptions();
+    private static final ChromeOptions OPTIONS = new ChromeOptions();
 
     @BeforeEach
     public void setUp() {
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("guest");
+        //driver init
+        OPTIONS.addArguments("--disable-notifications");
+        OPTIONS.addArguments("--disable-popup-blocking");
+        OPTIONS.addArguments("guest");
+        driver = new ChromeDriver(OPTIONS);
 
-        driver = new ChromeDriver(options);
-
+        //driver settings
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
+        //page init
         driver.get(config().baseUrl());
         DriverManager.setDriver(driver);
         page = createPage();
